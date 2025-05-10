@@ -12,6 +12,7 @@ import UserConnectPage from "./components/UserConnectPage.jsx";
 import NamePage from "./components/NamePage.jsx";
 import QRScanPage from "./components/QRScanPage.jsx";
 import CatcherPage from "./components/CatcherPage.jsx";
+import RankingPage from "./components/RankingPage.jsx";
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
         <Route path="/name" element={<NamePage />} />
         <Route path="/scan" element={<QRScanPage />} />
         <Route path="/catcher" element={<CatcherPage />} />
+        <Route path="/ranking" element={<RankingPage />} />
       </Routes>
     </Router>
   )
