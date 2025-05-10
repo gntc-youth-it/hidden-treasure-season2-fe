@@ -9,6 +9,7 @@ import TreasureImage from "./components/TreasureImage.jsx";
 import MainPage from "./components/MainPage.jsx";
 import UserImage from "./components/UserImage.jsx";
 import UserConnectPage from "./components/UserConnectPage.jsx";
+import NamePage from "./components/NamePage.jsx";
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/treasure/:treasureId" element={<TreasureRoute />} />
         <Route path="/user/:userId" element={<UserRoute />} />
         <Route path="/connect" element={<UserConnectPage />} />
+        <Route path="/name" element={<NamePage />} />
       </Routes>
     </Router>
   )
