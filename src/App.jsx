@@ -15,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/treasure/:treasureId" element={<TreasureRoute />} />
+        <Route path="/user/:userId" element={<UserRoute />} />
       </Routes>
     </Router>
   )
@@ -23,5 +24,10 @@ function App() {
 const TreasureRoute = () => {
   const { treasureId} = useParams();
   return <TreasureImage treasureId={parseInt(treasureId, 10)} />;
+}
+
+const UserRoute = () => {
+  const { userId } = useParams();
+  return <UserImage userId={parseInt(userId, 10)} />;
 }
 export default App
