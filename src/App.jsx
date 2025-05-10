@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import TreasureImage from "./components/TreasureImage.jsx";
 import MainPage from "./components/MainPage.jsx";
+import UserImage from "./components/UserImage.jsx";
 
 function App() {
 
