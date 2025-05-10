@@ -10,6 +10,7 @@ import MainPage from "./components/MainPage.jsx";
 import UserImage from "./components/UserImage.jsx";
 import UserConnectPage from "./components/UserConnectPage.jsx";
 import NamePage from "./components/NamePage.jsx";
+import QRScanPage from "./components/QRScanPage.jsx";
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
         <Route path="/user/:userId" element={<UserRoute />} />
         <Route path="/connect" element={<UserConnectPage />} />
         <Route path="/name" element={<NamePage />} />
+        <Route path="/scan" element={<QRScanPage />} />
       </Routes>
     </Router>
   )
