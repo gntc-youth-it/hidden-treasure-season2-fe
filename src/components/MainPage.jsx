@@ -35,7 +35,7 @@ const MainPage = () => {
 
 
   const handleStart = () => {
-    navigate('/form');
+    navigate('/connect');
   };
 
   return (
