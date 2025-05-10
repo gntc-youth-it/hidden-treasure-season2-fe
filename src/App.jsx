@@ -5,12 +5,15 @@ import {
   Routes,
   useParams
 } from "react-router-dom";
+import TreasureImage from "./components/TreasureImage.jsx";
+import MainPage from "./components/MainPage.jsx";
 
 function App() {
 
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<MainPage />} />
         <Route path="/treasure/:treasureId" element={<TreasureRoute />} />
       </Routes>
     </Router>
