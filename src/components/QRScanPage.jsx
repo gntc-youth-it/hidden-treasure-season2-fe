@@ -50,40 +50,28 @@ const QRScanPage = () => {
   // 순위 정보 가져오기
   const fetchStats = useCallback(async () => {
     try {
-      // 현재 순위 조회 API가 아직 없으므로 임시로 더미 데이터 사용
-      // API 엔드포인트가 준비되면 이 부분을 수정하세요
-      /* 실제 API 호출 코드 (나중에 활성화)
+      // 현재 구현된 API를 사용하여 사용자 순위 정보 가져오기
       const response = await fetch(`https://api.bhohwa.click/rank/${userId}`);
       const data = await response.json();
 
       if (!response.ok) {
-        if (data.code === 8001) {
+        if (response.status === 404) {
           setNoTreasure(true);
           setStats(null);
         }
         return;
       }
-      setNoTreasure(false);
-      setStats(data);
-      */
 
-      // 임시 더미 데이터
-      // 처음 클릭했을 때는 보물 없음 표시
-      if (!stats) {
-        setNoTreasure(true);
-        setStats(null);
-      } else {
-        // 두 번째 클릭부터는 더미 데이터 표시
-        setNoTreasure(false);
-        setStats({
-          treasureCount: 1,
-          rank: 3
-        });
-      }
+      setNoTreasure(false);
+      setStats({
+        treasureCount: data.treasureCount,
+        rank: data.rank,
+        score: data.score
+      });
     } catch (err) {
       showToastMessage('순위 정보를 불러오는데 실패했습니다.');
     }
-  }, [stats, userId, showToastMessage]);
+  }, [userId, showToastMessage]);
 
   // QR 스캔 처리 함수
   const handleQrCodeScanRef = useRef(async (decodedText) => {
@@ -327,9 +315,13 @@ const QRScanPage = () => {
                         </div>
                     ) : stats && (
                         <div className="flex items-center mr-4 text-white">
-                          <div className="text-center mr-6">
+                          <div className="text-center mr-4">
                             <div className="text-sm text-gray-400">찾은 보물</div>
                             <div className="text-xl font-bold">{stats.treasureCount}개</div>
+                          </div>
+                          <div className="text-center mr-4">
+                            <div className="text-sm text-gray-400">점수</div>
+                            <div className="text-xl font-bold">{stats.score}점</div>
                           </div>
                           <div className="text-center">
                             <div className="text-sm text-gray-400">현재 순위</div>
@@ -350,22 +342,22 @@ const QRScanPage = () => {
         </div>
 
         <style jsx>{`
-        #qr-reader {
-          border: none !important;
-          width: 100% !important;
-          height: 100% !important;
-        }
+          #qr-reader {
+            border: none !important;
+            width: 100% !important;
+            height: 100% !important;
+          }
 
-        #qr-reader video {
-          width: 100% !important;
-          height: 100% !important;
-          object-fit: cover !important;
-        }
+          #qr-reader video {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+          }
 
-        #qr-reader__dashboard {
-          display: none !important;
-        }
-      `}</style>
+          #qr-reader__dashboard {
+            display: none !important;
+          }
+        `}</style>
       </div>
   );
 };
